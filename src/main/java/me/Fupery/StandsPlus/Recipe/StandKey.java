@@ -21,8 +21,7 @@ public class StandKey extends ItemStack {
         super(Material.TRIPWIRE_HOOK);
         ItemMeta meta = getItemMeta();
         meta.setDisplayName("§e§l•§6§lArmor Stand Hook§e§l•");
-        meta.setLore(Arrays.asList(
-                ChatColor.AQUA + "§oStandKey",
+        meta.setLore(Arrays.asList(STAND_KEY,
                 ChatColor.GRAY + "Right-Click an §aArmor Stand",
                 ChatColor.GRAY + "To rotate and edit its parts."));
         addUnsafeEnchantment(Enchantment.LOOT_BONUS_MOBS, 1);

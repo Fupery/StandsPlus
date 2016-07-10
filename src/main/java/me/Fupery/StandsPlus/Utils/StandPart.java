@@ -1,4 +1,4 @@
-package me.Fupery.StandsPlus;
+package me.Fupery.StandsPlus.Utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.ArmorStand;

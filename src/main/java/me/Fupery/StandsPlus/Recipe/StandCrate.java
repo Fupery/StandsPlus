@@ -18,20 +18,20 @@ public class StandCrate extends ItemStack {
     private static String STAND_CRATE = "§b§oStandCrate";
 
     private StandCrate() {
-        super(Material.TRIPWIRE_HOOK);
+        super(Material.CHEST);
         ItemMeta meta = getItemMeta();
-        meta.setDisplayName("§e§l•§6§lArmor Stand Hook§e§l•");
+        meta.setDisplayName("§e§l•§6§lArmor Stand Crate§e§l•");
         meta.setLore(Arrays.asList(
-                ChatColor.AQUA + "§oStandKey",
+                STAND_CRATE,
                 ChatColor.GRAY + "Right-Click an §aArmor Stand",
-                ChatColor.GRAY + "To rotate and edit its parts."));
+                ChatColor.GRAY + "To store it. Right-Click to place."));
         addUnsafeEnchantment(Enchantment.LOOT_BONUS_MOBS, 1);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         setItemMeta(meta);
     }
 
     public static boolean isValidMaterial(ItemStack itemStack) {
-        return itemStack.getType() == Material.TRIPWIRE_HOOK && itemStack.hasItemMeta()
+        return itemStack.getType() == Material.CHEST && itemStack.hasItemMeta()
                 && itemStack.getItemMeta().hasLore() && itemStack.getItemMeta().getLore().get(0).equals(STAND_CRATE);
     }
 
