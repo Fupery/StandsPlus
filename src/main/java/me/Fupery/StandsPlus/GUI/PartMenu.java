@@ -121,10 +121,12 @@ class PartMenu extends InventoryMenu {
                 shift = 0;
             }
             if (shift != 0) {
-                Bukkit.getScheduler().runTask(plugin, () -> updateAngle(axis, shift));
-                updateButton();
-                updateInventory(plugin, player);
-                SoundCompat.UI_BUTTON_CLICK.play(player);
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    updateAngle(axis, shift);
+                    updateButton();
+                    updateInventory(plugin, player);
+                    SoundCompat.UI_BUTTON_CLICK.play(player);
+                });
             }
         }
 
