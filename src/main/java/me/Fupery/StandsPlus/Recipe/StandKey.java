@@ -2,7 +2,6 @@ package me.Fupery.StandsPlus.Recipe;
 
 import me.Fupery.StandsPlus.Utils.Lang;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -12,9 +11,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 
-/**
- * Created by aidenhatcher on 10/07/2016.
- */
 public class StandKey extends ItemStack {
     private static String STAND_KEY = "§b§oStandKey";
 
@@ -23,8 +19,8 @@ public class StandKey extends ItemStack {
         ItemMeta meta = getItemMeta();
         meta.setDisplayName(Lang.STAND_KEY_NAME.message());
         meta.setLore(Arrays.asList(STAND_KEY,
-                ChatColor.GRAY + Lang.STAND_KEY_LORE_CLICK.message(),
-                ChatColor.GRAY + Lang.STAND_KEY_LORE_ROTATE.message()));
+                Lang.STAND_KEY_LORE_CLICK.message(),
+                Lang.STAND_KEY_LORE_ROTATE.message()));
         addUnsafeEnchantment(Enchantment.LOOT_BONUS_MOBS, 1);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         setItemMeta(meta);

@@ -11,9 +11,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 
-/**
- * Created by aidenhatcher on 10/07/2016.
- */
 public class StandCrate extends ItemStack {
     private static String STAND_CRATE = "§b§oStandCrate";
 

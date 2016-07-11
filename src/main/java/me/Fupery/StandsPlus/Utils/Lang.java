@@ -35,10 +35,6 @@ public enum Lang {
         return message;
     }
 
-    public String rawMessage() {
-        return message;
-    }
-
     public enum Array {
         POSE_MENU_HELP, POSE_BUTTON, LEGS_BUTTON;
 

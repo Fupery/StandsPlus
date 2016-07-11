@@ -4,9 +4,9 @@ package me.Fupery.StandsPlus.GUI;
 import me.Fupery.InventoryMenu.Utils.SoundCompat;
 import me.Fupery.StandsPlus.GUI.API.InventoryMenu;
 import me.Fupery.StandsPlus.GUI.API.MenuButton;
+import me.Fupery.StandsPlus.StandsPlus;
 import me.Fupery.StandsPlus.Utils.Lang;
 import me.Fupery.StandsPlus.Utils.StandPart;
-import me.Fupery.StandsPlus.StandsPlus;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -21,9 +21,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Created by aidenhatcher on 10/07/2016.
- */
 public class StandMenu extends InventoryMenu {
     private final ArmorStand stand;
     private final StandsPlus plugin;
@@ -65,16 +62,17 @@ public class StandMenu extends InventoryMenu {
         if (!switchingMenus) stopEditing();
     }
 
-    protected void startEditing() {
+    void startEditing() {
         stand.setInvulnerable(true);
         stand.setGlowing(true);
     }
-    protected void stopEditing() {
+
+    void stopEditing() {
         stand.setInvulnerable(false);
         stand.setGlowing(false);
     }
 
-    protected ArmorStand getStand() {
+    ArmorStand getStand() {
         return stand;
     }
 

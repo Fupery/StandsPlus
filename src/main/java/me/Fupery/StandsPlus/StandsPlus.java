@@ -4,7 +4,6 @@ import me.Fupery.StandsPlus.Event.PlayerInteractListener;
 import me.Fupery.StandsPlus.GUI.API.GenericMenuListener;
 import me.Fupery.StandsPlus.GUI.API.InventoryMenu;
 import me.Fupery.StandsPlus.Recipe.StandKey;
-import me.Fupery.StandsPlus.Utils.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,9 +12,6 @@ import java.io.Reader;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Created by aidenhatcher on 10/07/2016.
- */
 public class StandsPlus extends JavaPlugin {
 
     private GenericMenuListener menuListener;
