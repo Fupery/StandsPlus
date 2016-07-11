@@ -1,9 +1,9 @@
 package me.Fupery.StandsPlus.GUI;
 
-import me.Fupery.InventoryMenu.Utils.SoundCompat;
 import me.Fupery.StandsPlus.GUI.API.InventoryMenu;
 import me.Fupery.StandsPlus.GUI.API.MenuButton;
 import me.Fupery.StandsPlus.Utils.Lang;
+import me.Fupery.StandsPlus.Utils.SoundCompat;
 import me.Fupery.StandsPlus.Utils.StandPart;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

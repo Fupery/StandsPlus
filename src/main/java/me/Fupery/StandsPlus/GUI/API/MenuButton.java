@@ -1,6 +1,6 @@
 package me.Fupery.StandsPlus.GUI.API;
 
-import me.Fupery.InventoryMenu.Utils.SoundCompat;
+import me.Fupery.StandsPlus.Utils.SoundCompat;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

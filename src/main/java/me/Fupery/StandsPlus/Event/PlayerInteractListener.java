@@ -1,9 +1,9 @@
 package me.Fupery.StandsPlus.Event;
 
-import me.Fupery.InventoryMenu.Utils.SoundCompat;
 import me.Fupery.StandsPlus.GUI.StandMenu;
 import me.Fupery.StandsPlus.Recipe.StandKey;
 import me.Fupery.StandsPlus.StandsPlus;
+import me.Fupery.StandsPlus.Utils.SoundCompat;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
