@@ -40,7 +40,7 @@ public class PlayerInteractListener implements Listener {
 
     @EventHandler
     public void onPlayerDamageEntity(EntityDamageByEntityEvent event) {
-        if (event.getDamager() instanceof Player && event.getEntity().getType() == EntityType.ARMOR_STAND) {
+        if (event.getDamager() instanceof Player && checkValidStand(event.getEntity())) {
             Player player = ((Player) event.getDamager());
             ArmorStand stand = ((ArmorStand) event.getEntity());
             if (StandKey.isValidMaterial(player.getItemInHand())) {
@@ -66,8 +66,12 @@ public class PlayerInteractListener implements Listener {
         handleClick(event, event.getPlayer(), event.getRightClicked());
     }
 
+    private boolean checkValidStand(Entity entity) {
+        return entity.getType() == EntityType.ARMOR_STAND && ((ArmorStand) entity).isVisible();
+    }
+
     private void handleClick(Cancellable event, Player player, Entity clicked) {
-        if (!event.isCancelled() && (clicked.getType() == EntityType.ARMOR_STAND)
+        if (!event.isCancelled() && checkValidStand(clicked)
                 && StandKey.isValidMaterial(player.getItemInHand())) {
             event.setCancelled(true);
             new StandMenu(plugin, ((ArmorStand) clicked)).open(plugin, player);
