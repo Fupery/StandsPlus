@@ -1,5 +1,6 @@
 package me.Fupery.StandsPlus.GUI;
 
+import me.Fupery.StandsPlus.Utils.Lang;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
@@ -8,11 +9,11 @@ import org.bukkit.entity.ArmorStand;
  * Created by aidenhatcher on 10/07/2016.
  */
 enum StandProperty {
-    VISIBLE("Is Visible", "§7Stand is invisible if off", Material.GLASS_BOTTLE),
-    GRAVITY("Has Gravity", "§7Stand has gravity if on", Material.FEATHER),
-    BASEPLATE("Show Baseplate", "§7Baseplate is hidden if off", Material.STONE_PLATE),
-    ARMS("Show Arms", "§7Arms are hidden if off", Material.STICK),
-    SMALL("Is Small", "§7Stand is small if on", Material.EGG);
+    VISIBLE(Lang.VISIBLE.message(), Lang.VISIBLE_DESCRIPTION.message(), Material.GLASS_BOTTLE),
+    GRAVITY(Lang.GRAVITY.message(), Lang.GRAVITY_DESCRIPTION.message(), Material.FEATHER),
+    BASEPLATE(Lang.BASEPLATE.message(), Lang.BASEPLATE_DESCRIPTION.message(), Material.STONE_PLATE),
+    ARMS(Lang.ARMS.message(), Lang.ARMS_DESCRIPTION.message(), Material.STICK),
+    SMALL(Lang.SMALL.message(), Lang.SMALL_DESCRIPTION.message(), Material.EGG);
 
     private final String propertyName;
     private final String description;
@@ -26,7 +27,7 @@ enum StandProperty {
 
     String getButtonTitle(boolean value) {
         return String.format("%s: %s", ChatColor.GOLD + propertyName,
-                value ? ChatColor.GREEN + "ON" : ChatColor.RED + "OFF");
+                value ? ChatColor.GREEN + Lang.TOGGLE_ON.message() : ChatColor.RED + Lang.TOGGLE_OFF.message());
     }
 
     void apply(ArmorStand stand, boolean value) {

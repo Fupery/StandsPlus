@@ -3,6 +3,7 @@ package me.Fupery.StandsPlus.GUI;
 import me.Fupery.InventoryMenu.Utils.SoundCompat;
 import me.Fupery.StandsPlus.GUI.API.InventoryMenu;
 import me.Fupery.StandsPlus.GUI.API.MenuButton;
+import me.Fupery.StandsPlus.Utils.Lang;
 import me.Fupery.StandsPlus.Utils.StandPart;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,12 +21,11 @@ import java.math.BigDecimal;
 class PartMenu extends InventoryMenu {
     private final StandPart part;
 
-    PartMenu(StandMenu parent, ArmorStand stand, StandPart part) {
+    PartMenu(StandMenu parent, StandPart part) {
         super(parent, ChatColor.BOLD + part.fancyName(false), InventoryType.HOPPER);
         this.part = part;
         MenuButton[] buttons = new MenuButton[]{
-                new MenuButton.StaticButton(Material.SIGN,
-                        "§a§l•§e§lPose Menu§a§l•", ChatColor.GRAY + "Click the compasses to rotate"),
+                new MenuButton.StaticButton(Material.SIGN, Lang.Array.POSE_MENU_HELP.messages()),
                 new RotationButton(Axis.X), new RotationButton(Axis.Y), new RotationButton(Axis.Z),
                 new MenuButton.CloseButton(this)
         };
@@ -40,7 +40,7 @@ class PartMenu extends InventoryMenu {
     @Override
     public void close(Player player) {
         super.close(player);
-        getStand().setGlowing(false);
+        ((StandMenu) parent).stopEditing();
     }
 
     private void updateAngle(Axis axis, double axisAngle) {
@@ -68,10 +68,6 @@ class PartMenu extends InventoryMenu {
     private enum Axis {
         X, Y, Z;
 
-        String getButtonText(double angle) {
-            return ChatColor.GREEN + name() + " Axis: " + ChatColor.YELLOW + angle;
-        }
-
         String getButtonText(EulerAngle angle) {
             double axisAngle;
             switch (this) {
@@ -89,7 +85,7 @@ class PartMenu extends InventoryMenu {
             }
             BigDecimal dec = new BigDecimal(axisAngle);
             dec = dec.setScale(2, BigDecimal.ROUND_HALF_UP);
-            return ChatColor.GREEN + name() + " Axis: " + dec.doubleValue();
+            return ChatColor.GREEN + name() + Lang.AXIS.message() + dec.doubleValue();
         }
     }
 
@@ -97,11 +93,7 @@ class PartMenu extends InventoryMenu {
         private Axis axis;
 
         RotationButton(Axis axis) {
-            super(Material.COMPASS,
-                    "",
-                    ChatColor.GRAY + "Left-Click to increase angle",
-                    ChatColor.GRAY + "Right-Click to decrease angle",
-                    ChatColor.YELLOW + "Hold shift to rotate slowly");
+            super(Material.COMPASS, Lang.Array.POSE_BUTTON.messages());
             this.axis = axis;
             updateButton();
         }

@@ -4,6 +4,7 @@ package me.Fupery.StandsPlus.GUI;
 import me.Fupery.InventoryMenu.Utils.SoundCompat;
 import me.Fupery.StandsPlus.GUI.API.InventoryMenu;
 import me.Fupery.StandsPlus.GUI.API.MenuButton;
+import me.Fupery.StandsPlus.Utils.Lang;
 import me.Fupery.StandsPlus.Utils.StandPart;
 import me.Fupery.StandsPlus.StandsPlus;
 import org.bukkit.ChatColor;
@@ -29,7 +30,7 @@ public class StandMenu extends InventoryMenu {
     private boolean switchingMenus = false;
 
     public StandMenu(StandsPlus plugin, ArmorStand stand) {
-        super(null, ChatColor.BOLD + "Editing Armor Stand", InventoryType.DISPENSER);
+        super(null, ChatColor.BOLD + Lang.STAND_MENU_TITLE.message(), InventoryType.DISPENSER);
         this.stand = stand;
         MenuButton[] buttons = new MenuButton[]{
                 new PropertyButton(StandProperty.BASEPLATE),
@@ -54,14 +55,23 @@ public class StandMenu extends InventoryMenu {
     @Override
     public void open(JavaPlugin plugin, Player player) {
         super.open(plugin, player);
-        stand.setGlowing(true);
+        startEditing();
         switchingMenus = false;
     }
 
     @Override
     public void close(Player player) {
         super.close(player);
-        if (!switchingMenus) stand.setGlowing(false);
+        if (!switchingMenus) stopEditing();
+    }
+
+    protected void startEditing() {
+        stand.setInvulnerable(true);
+        stand.setGlowing(true);
+    }
+    protected void stopEditing() {
+        stand.setInvulnerable(false);
+        stand.setGlowing(false);
     }
 
     protected ArmorStand getStand() {
@@ -72,16 +82,12 @@ public class StandMenu extends InventoryMenu {
         return this;
     }
 
-    public StandsPlus getPlugin() {
-        return plugin;
-    }
-
     private class PartButton extends MenuButton {
 
         private StandPart part;
 
         PartButton(Material type, StandPart part) {
-            super(type, part.fancyName(true), ChatColor.GREEN + "Click to rotate");
+            super(type, part.fancyName(true), Lang.POSE_MENU_BUTTON.message());
             this.part = part;
             ItemMeta meta = getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -93,16 +99,14 @@ public class StandMenu extends InventoryMenu {
         @Override
         public void onClick(JavaPlugin plugin, Player player, ClickType click) {
             switchingMenus = true;
-            new PartMenu(getMenu(), stand, part).open(plugin, player);
+            new PartMenu(getMenu(), part).open(plugin, player);
         }
     }
 
     private class LegButton extends MenuButton {
 
         LegButton() {
-            super(Material.CHAINMAIL_LEGGINGS, ChatColor.GOLD + "§e•§6 Legs §e•",
-                    "§aLeft-Click §7to rotate §aLeft Leg",
-                    "§aRight-Click §7to rotate §aRight Leg");
+            super(Material.CHAINMAIL_LEGGINGS, Lang.Array.LEGS_BUTTON.messages());
             ItemMeta meta = getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -113,9 +117,9 @@ public class StandMenu extends InventoryMenu {
         public void onClick(JavaPlugin plugin, Player player, ClickType click) {
             switchingMenus = true;
             if (click.isLeftClick()) {
-                new PartMenu(getMenu(), stand, StandPart.LEFT_LEG).open(plugin, player);
+                new PartMenu(getMenu(), StandPart.LEFT_LEG).open(plugin, player);
             } else if (click.isRightClick()) {
-                new PartMenu(getMenu(), stand, StandPart.RIGHT_LEG).open(plugin, player);
+                new PartMenu(getMenu(), StandPart.RIGHT_LEG).open(plugin, player);
             }
         }
     }
@@ -127,7 +131,7 @@ public class StandMenu extends InventoryMenu {
 
         PropertyButton(StandProperty property) {
             super(property.getIcon(), property.getButtonTitle(property.getValue(stand)),
-                    property.getDescription(), ChatColor.YELLOW + "Click to toggle");
+                    property.getDescription(), Lang.TOGGLE_BUTTON.message());
             this.value = property.getValue(stand);
             this.property = property;
             if (value) {

@@ -1,0 +1,36 @@
+#lang
+english:
+  STAND_MENU_TITLE: "Editing Armor Stand"
+  POSE_MENU_BUTTON: "§aClick to rotate"
+  TOGGLE_BUTTON: "§eClick to toggle"
+  VISIBLE: "Is Visible"
+  VISIBLE_DESCRIPTION: "§7Stand is invisible if off"
+  GRAVITY: "Has Gravity"
+  GRAVITY_DESCRIPTION: "§7Stand has gravity if on"
+  BASEPLATE: "Show Baseplate"
+  BASEPLATE_DESCRIPTION: "§7Baseplate is hidden if off"
+  ARMS: "Show Arms"
+  ARMS_DESCRIPTION: "§7Arms are hidden if off"
+  SMALL: "Is Small"
+  SMALL_DESCRIPTION: "§7Stand is small if on"
+  STAND_KEY_NAME: "§e§l•§6§lArmor Stand Hook§e§l•"
+  STAND_KEY_LORE_CLICK: "§7Right-Click an §aArmor Stand"
+  STAND_KEY_LORE_ROTATE: "§7To rotate and edit its parts."
+  AXIS: " Axis: "
+  EDITING: "Editing "
+  TOGGLE_ON: "On"
+  TOGGLE_OFF: "Off"
+
+  POSE_MENU_HELP:
+    - "§a§l•§e§lPose Menu§a§l•"
+    - "§7Click the compasses to rotate"
+  POSE_BUTTON:
+    - ""
+    - "§7Left-Click to increase angle"
+    - "§7Right-Click to decrease angle"
+    - "§eHold shift to rotate slowly"
+
+  LEGS_BUTTON:
+  - "§e•§6 Legs §e•"
+  - "§aLeft-Click §7to rotate §aLeft Leg"
+  - "§eRight-Click §7to rotate §eRight Leg"

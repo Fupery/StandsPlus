@@ -1,5 +1,6 @@
 package me.Fupery.StandsPlus.Recipe;
 
+import me.Fupery.StandsPlus.Utils.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,10 +21,10 @@ public class StandKey extends ItemStack {
     private StandKey() {
         super(Material.TRIPWIRE_HOOK);
         ItemMeta meta = getItemMeta();
-        meta.setDisplayName("§e§l•§6§lArmor Stand Hook§e§l•");
+        meta.setDisplayName(Lang.STAND_KEY_NAME.message());
         meta.setLore(Arrays.asList(STAND_KEY,
-                ChatColor.GRAY + "Right-Click an §aArmor Stand",
-                ChatColor.GRAY + "To rotate and edit its parts."));
+                ChatColor.GRAY + Lang.STAND_KEY_LORE_CLICK.message(),
+                ChatColor.GRAY + Lang.STAND_KEY_LORE_ROTATE.message()));
         addUnsafeEnchantment(Enchantment.LOOT_BONUS_MOBS, 1);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         setItemMeta(meta);

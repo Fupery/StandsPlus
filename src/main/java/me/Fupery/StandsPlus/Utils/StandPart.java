@@ -15,7 +15,7 @@ public enum StandPart {
             name += word.substring(0, 1).toUpperCase() + word.substring(1);
             if (i < words.length - 1) name += " ";
         }
-        return colour ? "§e•§6 " + name + " §e•" : ChatColor.BOLD + "Editing " + name;
+        return colour ? "§e•§6 " + name + " §e•" : ChatColor.BOLD + Lang.EDITING.message() + name;
     }
 
     public void pose(ArmorStand stand, EulerAngle angle) {
